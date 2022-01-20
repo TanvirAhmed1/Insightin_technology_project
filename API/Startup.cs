@@ -18,6 +18,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
+using API.Helpers;
 
 namespace API
 {
@@ -34,6 +36,8 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<ITokenService, TokenService>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
             services.AddDbContext<DataContext>(option => option.UseInMemoryDatabase(Configuration.GetConnectionString("MyDb")));
             services.AddControllers();
             services.AddSwaggerGen(c =>
