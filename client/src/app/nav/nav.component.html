@@ -1,22 +1,24 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <div class="container">
-        <a class="navbar-brand" href="#">Notes Manager</a>
+        <a class="navbar-brand" routerLink="/">Notes Manager</a>
       <ul class="navbar-nav mr-auto" *ngIf="accountService.currentUser$ | async">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Regular Note</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Reminder</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Todo</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Bookmark</a>
+        <ng-container *ngIf="accountService.currentUser$ | async">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/regularnote" routerLinkActive="active">Regular Note</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/reminder" routerLinkActive="active">Reminder</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/todo" routerLinkActive="active">Todo</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" routerLink="/bookmark" routerLinkActive="active">Bookmark</a>
+          </li>
+        </ng-container>
       </ul>
-      <div class="dropdown" *ngIf="accountService.currentUser$ | async" dropdown>
-        <a class="dropdown-toggle text-light" dropdownToggle>Welcome User</a>
+      <div class="dropdown" *ngIf="(accountService.currentUser$ | async) as user" dropdown>
+        <a class="dropdown-toggle text-light" dropdownToggle>Welcome {{user.username}}</a>
         <div class="dropdown-menu mt-3" *dropdownMenu>
           <a class="dropdown-item">Edit Profile</a>
           <div class="dropdown-divider"></div>
