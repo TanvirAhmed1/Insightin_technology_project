@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavComponent } from './nav/nav.component';
 import { FormsModule } from '@angular/forms';
@@ -16,6 +16,7 @@ import { TodoComponent } from './notes/todo/todo.component';
 import { BookmarkComponent } from './notes/bookmark/bookmark.component';
 import { UsernotesComponent } from './usernotes/usernotes.component';
 import { ToastrModule } from 'ngx-toastr';
+import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,9 @@ import { ToastrModule } from 'ngx-toastr';
       positionClass: 'toast-bottom-right' 
     })
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

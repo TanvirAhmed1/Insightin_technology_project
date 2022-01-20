@@ -1,7 +1,9 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace API.Entities
 {
+    [Table("ToDos")]
     public class ToDo
     {
         public int Id { get; set; }

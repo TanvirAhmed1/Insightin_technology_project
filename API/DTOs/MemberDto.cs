@@ -8,7 +8,7 @@ namespace API.DTOs
         public int Id { get; set; }
         public string UserName { get; set; }
         public string Email { get; set; }
-        public DateTime DateOfBirth { get; set; }
+        //public DateTime DateOfBirth { get; set; }
         public ICollection<RegularNoteDto> RegularNotes { get; set; }
         public ICollection<ReminderDto> Reminders { get; set; }
         public ICollection<ToDoDto> ToDos { get; set; }

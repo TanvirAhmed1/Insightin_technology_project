@@ -1,5 +1,8 @@
-﻿namespace API.Entities
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace API.Entities
 {
+    [Table("Bookmarks")]
     public class Bookmark
     {
         public int Id { get; set; }

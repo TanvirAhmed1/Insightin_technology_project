@@ -1,7 +1,9 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace API.Entities
 {
+    [Table("Reminders")]
     public class Reminder
     {
         public int Id { get; set; }
